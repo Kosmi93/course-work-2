@@ -1,17 +1,19 @@
 package bip.online.coursework2.service;
 
 import bip.online.coursework2.entity.Question;
-import bip.online.coursework2.repo.JavaQuestionsRepo;
+import bip.online.coursework2.repo.MathQuestionsRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
-@Service(value = "JavaQuestionsService")
+@Service(value = "MathQuestionsService")
 @RequiredArgsConstructor
-public class JavaQuestionsService implements QuestionsService {
+public class MathQuestionsService implements QuestionsService {
 
-    private final JavaQuestionsRepo repository;
+    private final MathQuestionsRepo repository;
 
     @Override
     public Question add(Question question) {
