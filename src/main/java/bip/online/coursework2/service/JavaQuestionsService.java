@@ -5,7 +5,9 @@ import bip.online.coursework2.repo.JavaQuestionsRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 @Service(value = "JavaQuestionsService")
 @RequiredArgsConstructor

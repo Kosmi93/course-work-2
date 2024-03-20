@@ -18,16 +18,21 @@ import java.util.List;
 @MockitoSettings(strictness = Strictness.LENIENT)
 class ExaminerServiceImplTest {
     @Mock
-    private JavaQuestionsService questionsService;
+    private JavaQuestionsService javaQuestionsService;
+    @Mock
+    private MathQuestionsService mathQuestionsService;
     @InjectMocks
     private ExaminerServiceImpl examinerService;
 
     @Test
     void getQuestions() {
         Question question = new Question("1", "1");
-        Mockito.when(questionsService.getAll()).thenReturn(List.of(question));
-        Mockito.when(questionsService.getRandomQuestion()).thenReturn(question);
-        Assertions.assertEquals(examinerService.getQuestions(1), List.of(question));
+        Question question2 = new Question("2", "2");
+        Mockito.when(mathQuestionsService.getAll()).thenReturn(List.of(question2));
+        Mockito.when(mathQuestionsService.getRandomQuestion()).thenReturn(question2);
+        Mockito.when(javaQuestionsService.getAll()).thenReturn(List.of(question));
+        Mockito.when(javaQuestionsService.getRandomQuestion()).thenReturn(question);
+        Assertions.assertEquals(2, examinerService.getQuestions(2).size());
     }
 
     @Test
