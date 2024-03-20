@@ -1,7 +1,7 @@
 package bip.online.coursework2.service;
 
 import bip.online.coursework2.entity.Question;
-import bip.online.coursework2.repo.JavaQuestionsRepo;
+import bip.online.coursework2.repo.MathQuestionsRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,17 +19,17 @@ import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
-class JavaQuestionsServiceTest {
+class MathQuestionsServiceTest {
     private final Question question = new Question("Вопрос", "Ответ");
     private final Question question2 = new Question("Вопрос2", "Ответ2");
     @Mock
-    JavaQuestionsRepo repo;
+    MathQuestionsRepo repo;
 
-    private JavaQuestionsService service;
+    private MathQuestionsService service;
 
     @BeforeEach
     public void setUp() {
-        service = new JavaQuestionsService(repo);
+        service = new MathQuestionsService(repo);
     }
 
     @Test

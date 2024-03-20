@@ -15,8 +15,9 @@ import java.util.Collection;
 public class ExamController {
     private final ExaminerService service;
 
-    @GetMapping
+    @GetMapping()
     public Collection<Question> getQuestions(int amount) {
         return service.getQuestions(amount);
     }
+
 }
