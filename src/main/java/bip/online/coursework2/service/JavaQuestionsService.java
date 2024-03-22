@@ -1,48 +1,49 @@
 package bip.online.coursework2.service;
 
 import bip.online.coursework2.entity.Question;
+import bip.online.coursework2.repo.JavaQuestionsRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
-@Service
+@Service(value = "JavaQuestionsService")
 @RequiredArgsConstructor
 public class JavaQuestionsService implements QuestionsService {
 
-    private final List<Question> questions = new ArrayList<>();
+    private final JavaQuestionsRepo repository;
 
     @Override
     public Question add(Question question) {
-        this.questions.add(question);
-        return question;
+        return repository.save(question);
     }
 
     @Override
     public Question add(String questions, String answer) {
         Question question = new Question(questions, answer);
-        this.questions.add(question);
-        return question;
+        return repository.save(question);
     }
 
     @Override
     public Question remove(Question question) {
-        this.questions.remove(question);
+        repository.delete(question);
         return question;
     }
 
     @Override
     public Collection<Question> getAll() {
-        return Collections.unmodifiableList(questions);
+        return repository.findAll();
     }
 
     @Override
     public Question getRandomQuestion() {
         Random r = new Random();
-        if(questions.isEmpty())
+        List<Question> temp = repository.findAll();
+        if(temp.isEmpty())
             return null;
         else
-            return questions.get(r.nextInt(questions.size()));
+            return temp.get(r.nextInt(temp.size()));
     }
 }
